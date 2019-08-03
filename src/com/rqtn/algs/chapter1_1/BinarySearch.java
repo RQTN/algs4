@@ -44,5 +44,7 @@ public class BinarySearch {
 			if (rankRecursive(key, whitelist) == -1)
 				StdOut.println(key);
 		}
+		
 	}
+	
 }

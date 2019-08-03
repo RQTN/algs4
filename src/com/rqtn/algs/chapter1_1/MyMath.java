@@ -1,5 +1,7 @@
 package com.rqtn.algs.chapter1_1;
 
+import edu.princeton.cs.algs4.StdOut;
+
 public class MyMath {
 	public static int gcd(int p, int q) {
 		if (q == 0) return p;
@@ -33,27 +35,28 @@ public class MyMath {
 	
 	public static void main(String[] args) {
 		// Test gcd
-		System.out.println();
-		System.out.printf("GCD of %d and %d is %d\n", 18, 48, gcd(18, 48));
-		System.out.printf("GCD of %d and %d is %d\n", 24, 36, gcd(24, 36));
-		System.out.printf("GCD of %d and %d is %d\n", 18, 36, gcd(18, 36));
+		StdOut.println();
+		StdOut.printf("GCD of %d and %d is %d\n", 18, 48, gcd(18, 48));
+		StdOut.printf("GCD of %d and %d is %d\n", 24, 36, gcd(24, 36));
+		StdOut.printf("GCD of %d and %d is %d\n", 18, 36, gcd(18, 36));
 		
 		// Test isPrime
-		System.out.println();
-		System.out.printf("Is %d a Prime? %b\n", 17, isPrime(17));
-		System.out.printf("Is %d a Prime? %b\n", 33, isPrime(33));
+		StdOut.println();
+		StdOut.printf("Is %d a Prime? %b\n", 17, isPrime(17));
+		StdOut.printf("Is %d a Prime? %b\n", 33, isPrime(33));
 		
 		// Test sqrt
-		System.out.println();
-		System.out.printf("Sqrt of %f is %f\n", 3.0, sqrt(3.0));
-		System.out.printf("Sqrt of %f is %f\n", 4.0, sqrt(4.0));
-		System.out.printf("Sqrt of %f is %f\n", -4.0, sqrt(-4.0));
+		StdOut.println();
+		StdOut.printf("Sqrt of %f is %f\n", 3.0, sqrt(3.0));
+		StdOut.printf("Sqrt of %f is %f\n", 4.0, sqrt(4.0));
+		StdOut.printf("Sqrt of %f is %f\n", -4.0, sqrt(-4.0));
 		
 		// Test H
-		System.out.println();
-		System.out.printf("%d order Harmonic equal %f\n", 2, H(2));
-		System.out.printf("%d order Harmonic equal %f\n", 10, H(10));
-		System.out.printf("%d order Harmonic equal %f\n", 100, H(100));
+		StdOut.println();
+		StdOut.printf("%d order Harmonic equal %f\n", 2, H(2));
+		StdOut.printf("%d order Harmonic equal %f\n", 10, H(10));
+		StdOut.printf("%d order Harmonic equal %f\n", 100, H(100));
+		
 		
 	}
 }
