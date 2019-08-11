@@ -4,7 +4,7 @@
 
 ### 相关资源
 
-* [Coursera - Algorithms, Part I](https://www.coursera.org/learn/algorithms-part1) + [Coursera - Algorithms, Part II](https://www.coursera.org/learn/algorithms-part2)：Princeton 算法公开课（原作者公开课）
+#### Book
 
 * [官方网站](https://algs4.cs.princeton.edu/home/)：包含**书本内容摘要**，**书本练习题答案**，**Web 练习题及解答**，**书本代码**，**书本所使用的数据集**，**书中所使用的库的 API 文档**，**课件**等等。
   * [Java Algorithms and Clients](https://algs4.cs.princeton.edu/code/)：
@@ -16,6 +16,11 @@
 * [kevin-wayne/algs4](https://github.com/kevin-wayne/algs4)：官方维护的 Github 仓库
 * [jimmysuncpt/Algorithms - Github](https://github.com/jimmysuncpt/Algorithms)：国内某同学答案（较完整）
 * [aistrate/AlgorithmsSedgewick - Github](https://github.com/aistrate/AlgorithmsSedgewick)：国外某同学答案
+
+#### Video
+
+* [Coursera - Algorithms, Part I](https://www.coursera.org/learn/algorithms-part1) + [Coursera - Algorithms, Part II](https://www.coursera.org/learn/algorithms-part2)：Princeton 算法公开课（原作者公开课）
+* [Maecenas/Algorithms-algs4-cos226-Princeton-Coursera - Github](https://github.com/Maecenas/Algorithms-algs4-cos226-Princeton-Coursera)：Coursera 上编程作业满分参考答案
 
 
 
