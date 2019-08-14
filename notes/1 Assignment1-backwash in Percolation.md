@@ -1,4 +1,4 @@
-## Assignment1 - backwash in Percolation
+## Assignment1 - Backwash In Percolation
 
 > 作业网站：[Assignment1-Percolation](https://coursera.cs.princeton.edu/algs4/assignments/percolation/specification.php)，包含本次作业的说明，FAQ，相关的有用资源文件。
 
