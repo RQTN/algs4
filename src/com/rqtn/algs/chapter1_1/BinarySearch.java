@@ -32,14 +32,6 @@ public class BinarySearch {
 		else return mid;
 	}
 	
-	public static int recursiveReverseRank(int key, int[] a, int lo, int hi) {
-		if (lo > hi) return -1;
-		int mid = lo + (hi - lo) / 2;
-		if (key > a[mid]) return recursiveReverseRank(key, a, lo, mid - 1);
-		else if (key < a[mid]) return recursiveReverseRank(key, a, mid + 1, hi);
-		else return mid;
-	}
-	
 	
 	public static void main(String[] args) {
 		int[] whitelist = new In(args[0]).readAllInts();
