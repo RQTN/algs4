@@ -440,9 +440,7 @@ Suppose that you have an $n$-story building (with floors $1$ through $n$) and pl
 
   假设第一个鸡蛋在 $u\sqrt{n}$ 处投掷时破碎了，那么显然 $(u-1)\sqrt{n}\lt T\le u\sqrt{n}$，在 worst case 下我们已经进行了 $\sim \sqrt{n}$ 次投掷了。然后我们在 $((u-1)\sqrt{n},u\sqrt{n}]$ 上从小到大顺序进行尝试，直到第二个鸡蛋破碎，这又要进行 $\sim \sqrt{n}$ 次投掷。两步操作加起来即消耗 $2$ 个鸡蛋，进行 $\sim 2\sqrt{n}$ 次投掷。
 
-  按提示，**还能再改进到 $\sim \sqrt{2n}$ tosses**，想不出来，在网上能找到的提示有：
-
-  > A very broad hint for version 4: consider that in your version-3 answer you don't have to use uniform intervals between drops of the first egg. Can you see how to use a non-uniform distribution so that the worst-case total is identical no matter where the first egg breaks?
+  按提示，**还能再改进到 $\sim \sqrt{2n}$ tosses**，这在文章 [The Two Egg Problem - DataGenetics](http://datagenetics.com/blog/july22012/index.html) 中的 Minimization of Maximum Regret 以及 Two egg solution 部分已经讲得非常清楚了，此处不再多做叙述。
 
 * Version 4: $2$ eggs and $\le c \sqrt T$ tosses for some fixed constant $c$.
 
@@ -453,6 +451,6 @@ Suppose that you have an $n$-story building (with floors $1$ through $n$) and pl
 #### 参考
 
 * [Given a bitonic array and element x in the array, find the index of x in 2log(n) time - StackOverflow](https://stackoverflow.com/questions/19372930/given-a-bitonic-array-and-element-x-in-the-array-find-the-index-of-x-in-2logn)
-
 * [Egg drop problem - StackExchange](https://math.stackexchange.com/questions/835582/egg-drop-problem)
+* [The Two Egg Problem - DataGenetics](http://datagenetics.com/blog/july22012/index.html)
 
