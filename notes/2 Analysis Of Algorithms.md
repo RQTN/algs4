@@ -2,7 +2,7 @@
 
 ### Interview Questions: Analysis of Algorithms (ungraded)
 
-**1. 3-SUM in quadratic time.** 
+#### **1. 3-SUM in quadratic time.** 
 
 Design an algorithm for the 3-SUM problem that takes time proportional to $n^2$ in the worst case. You may assume that you can sort the $n$ integers in time proportional to $n^2$ or better.
 
@@ -84,7 +84,7 @@ public class ThreeSumQuadratic {
 
 
 
-**2. Search in a bitonic array.** 
+#### **2. Search in a bitonic array.** 
 
 An array is **bitonic (双调)** if it is comprised of an increasing sequence of integers followed immediately by a decreasing sequence of integers. Write a program that, given a bitonic array of $n$ distinct integer values, determines whether a given integer is in the array.
 
@@ -119,7 +119,7 @@ An array is **bitonic (双调)** if it is comprised of an increasing sequence of
 
     * 若 `key` 比 `a[mid]` 要大，那么 `key` 只可能在 `a[mid]~a[hi]` 中，可递归求解。
 
-  网上:surfer: 发现，其实也有很多人和我一样把算法一想当然地认为是 $\sim2\lg N$ 的，对于其时间复杂度为 $O(\lg^2N)$ 的解释参考：[StackOverflow - Given a bitonic array and element x in the array, find the index of x in 2log(n) time](https://stackoverflow.com/questions/19372930/given-a-bitonic-array-and-element-x-in-the-array-find-the-index-of-x-in-2logn)。代码如下：
+  网上:surfer: 发现，其实也有很多人和我一样把算法一想当然地认为是 $\sim2\lg N$ 的，对于其时间复杂度为 $O(\lg^2N)$ 的解释参考：[Given a bitonic array and element x in the array, find the index of x in 2log(n) time - StackOverflow](https://stackoverflow.com/questions/19372930/given-a-bitonic-array-and-element-x-in-the-array-find-the-index-of-x-in-2logn)。代码如下：
 
   ```java
   package analysis_of_algs;
@@ -306,7 +306,7 @@ An array is **bitonic (双调)** if it is comprised of an increasing sequence of
 
   而实际上，**当 `key < a[mid]` 时（也即要寻找的 `key` 值位于蓝色部分时），我们可以直接在 `a[lo]~a[mid]` 这个双调数组上使用 `BinarySearch` 并得到正确的结果** 。
 
-  这就是算法三的关键思想：对于一个双调数组，如果你要寻找的 `key` 值位于 `a[lo]` 和 `a[hi]` 之间，那么直接使用 `BinarySearch` 是正确的。
+  这就是算法三的关键思想：**对于一个双调数组，如果你要寻找的 `key` 值位于 `a[lo]` 和 `a[hi]` 之间，那么直接使用 `BinarySearch` 是正确的。**
 
   <img src='../img/2-bitonicArray.png' width=40%>
 
@@ -314,10 +314,12 @@ An array is **bitonic (双调)** if it is comprised of an increasing sequence of
 
   那对于 `key > a[mid]` 的情况，`key` 处于黑色部分，我们只需要根据 `a[mid]` 附近的情况进行范围缩小即可。比如若我们要找到 `key` 是上图中的绿点，由于 `a[mid]` 附近是降序（说明 `key` 位于 `mid` 的左边），显然此时 `key` 只可能存在于左边 `a[lo]~a[mid]`，此时令 `hi=mid-1` 。依次类推，不断重复地缩小范围，使转换到 `key < a[mid]` 的情况，然后就能对两边 `BinarySearch` 进行求解。
 
-  如果要寻找的 `key` 特别大（比数组中的所有元素都大），那么此时有 $\sim \lg N$ 的比较数。一般地，假设 `k` 次缩小范围，则有：$$k+2\lg \frac{N}{2^{k+1}}=k+2(\lg N - (k+1))=2\lg N-k-2=\sim \lg N$$。
+  如果要寻找的 `key` 特别大（比数组中的所有元素都大），那么此时有 $\sim \lg N$ 的比较数。一般地，假设 `k` 次缩小范围，则有：$$k+2\lg \frac{N}{2^{k+1}}=k+2(\lg N - (k+1))=2\lg N-k-2=\sim 2\lg N$$。
+
+  对于双调数组查找问题，理想地，如果直接提供最大值下标，此时对最大值两边分别进行 `BinarySearch` 也需要 $\sim2\lg N$ 的比较数，所以算法三应该已经相当好了，至于题目中要求证明算法三是最优的（没有算法能做到少于 $\sim2\lg N$ 的比较数），这我就不知道了...
 
   代码如下（注意其中 `BinarySearch` 的 "2-way compare" 实现）：
-
+  
   ```java
   package analysis_of_algs;
   
@@ -397,7 +399,7 @@ An array is **bitonic (双调)** if it is comprised of an increasing sequence of
 
 
 
-**3. Egg drop.** 
+#### **3. Egg drop.** 
 
 Suppose that you have an $n$-story building (with floors $1$ through $n$) and plenty of eggs. An egg breaks if it is dropped from floor $T$ or higher and does not break otherwise. Your goal is to devise a strategy to determine the value of $T$ given the following limitations on the number of eggs and tosses:
 
@@ -407,7 +409,50 @@ Suppose that you have an $n$-story building (with floors $1$ through $n$) and pl
 - Version 3: $2$ eggs and $\sim2\sqrt{n}$ tosses.
 - Version 4: $2$ eggs and $\le c \sqrt T$ tosses for some fixed constant $c$.
 
+**Solution**
 
+题意：假设有一栋 $n$ 层高的建筑，已知在层数 $T$ 或更高层投掷鸡蛋鸡蛋会碎掉，现在提供有限的鸡蛋且仅允许你投掷有限次数，要求你找到这个 $T$ 值。
 
+* Version 0: $1$ egg,  $\le T$ tosses.
 
+  仅提供 $1$ 个鸡蛋，那我们要确保在精确得到 $T$ 之前，鸡蛋不能碎。
+
+  我们拿着这 $1$ 个鸡蛋从 $1$ 楼到 $n$ 楼依次投掷一次，到 $T$ 楼则会碎掉，从而在 $\le T$ 次投掷下使用 $1$ 个鸡蛋得到结果。
+
+* Version 1: $\sim1\lg n$ eggs and  $\sim1\lg n$ tosses.
+
+  采用二分查找的思想，首先在 $n/2$ 层投掷：
+
+  * 如果鸡蛋碎了，说明 $T < n/2$， 我们在 $[1,\ n/2)$ 层再进行查找（后续在 $n/4$ 层投掷）
+  * 如果鸡蛋没碎，说明 $T>n/2$，我们在 $(n/2,\ n]$ 层再进行查找（后续在 $n/2+n/4$ 层投掷）
+
+  本质上就是二分查找，虽然不知道 $T$ 具体是什么，但是鸡蛋是否破碎能够提供一种比较来支持二分查找，二分次数 $\sim\lg n$ 也即投掷次数，消耗鸡蛋数理论上肯定要比投掷次数要少，故满足题目要求。
+
+* Version 2: $\sim\lg T$ eggs and  $\sim2\lg T$ tosses.
+
+  我们按照 $1,2,4,8,16,32,\cdots,2^k$ 的楼层顺序进行投掷，只要鸡蛋不碎，就将楼层翻倍再进行投掷。
+
+  假设鸡蛋在 $2^u$ 碎了，那么显然有 $2^{u-1}\lt T\le 2^u$。  此时我们已经进行了 $u=\sim \lg T$ 次投掷，鸡蛋就碎了 $1$ 个。然后我们在 $(2^{u-1},2^u]$ 上进行二分查找，这又要进行 $\sim \lg T$ 次投掷，消耗鸡蛋数理论上小于 $\sim\lg T$。两步操作加起来即消耗 $\sim \lg T$ 个鸡蛋，进行 $\sim 2\lg T$ 次投掷。
+
+* Version 3: $2$ eggs and $\sim2\sqrt{n}$ tosses.
+
+  我们按照 $\sqrt{n},2\sqrt{n},3\sqrt{n},\cdots,k\sqrt{n}$ 的楼层顺序进行投掷。
+
+  假设第一个鸡蛋在 $u\sqrt{n}$ 处投掷时破碎了，那么显然 $(u-1)\sqrt{n}\lt T\le u\sqrt{n}$，在 worst case 下我们已经进行了 $\sim \sqrt{n}$ 次投掷了。然后我们在 $((u-1)\sqrt{n},u\sqrt{n}]$ 上从小到大顺序进行尝试，直到第二个鸡蛋破碎，这又要进行 $\sim \sqrt{n}$ 次投掷。两步操作加起来即消耗 $2$ 个鸡蛋，进行 $\sim 2\sqrt{n}$ 次投掷。
+
+  按提示，**还能再改进到 $\sim \sqrt{2n}$ tosses**，想不出来，在网上能找到的提示有：
+
+  > A very broad hint for version 4: consider that in your version-3 answer you don't have to use uniform intervals between drops of the first egg. Can you see how to use a non-uniform distribution so that the worst-case total is identical no matter where the first egg breaks?
+
+* Version 4: $2$ eggs and $\le c \sqrt T$ tosses for some fixed constant $c$.
+
+  我们按照 $1,3,6,10,15,21,\cdots,\frac{k(k+1)}{2}$ 的楼层顺序进行投掷。
+
+  假设第一个鸡蛋在 $\frac{u(u+1)}{2}$ 处投掷时破碎了，那么显然 $\frac{(u-1)u}{2}\lt T\le \frac{u(u+1)}{2}$，令 $T\le \frac{u(u+1)}{2}$ 可知 $u=\sim\sqrt{2T}$，故第一个鸡蛋破碎时我们进行了 $\sim \sqrt{2T}$ 次投掷。然后在 $(\frac{(u-1)u}{2}, \frac{u(u+1)}{2}]$ 上从小到大顺序进行尝试，直到第二个鸡蛋破碎，这又要进行至多 $\frac{u(u+1)}{2}-\frac{(u-1)u}{2}=u=\sim \sqrt{2T}$ 次投掷。两步操作加起来即消耗 $2$ 个鸡蛋，进行 $\sim 2\sqrt{2T}$ 次投掷，也即 $c=2\sqrt{2}$。
+
+#### 参考
+
+* [Given a bitonic array and element x in the array, find the index of x in 2log(n) time - StackOverflow](https://stackoverflow.com/questions/19372930/given-a-bitonic-array-and-element-x-in-the-array-find-the-index-of-x-in-2logn)
+
+* [Egg drop problem - StackExchange](https://math.stackexchange.com/questions/835582/egg-drop-problem)
 
