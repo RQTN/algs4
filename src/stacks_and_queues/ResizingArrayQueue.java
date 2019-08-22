@@ -6,7 +6,7 @@ import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
 public class ResizingArrayQueue<Item> implements Iterable<Item> {
-
+	
 	private Item[] q;
 	private int head = 0;
 	private int tail = 0;
@@ -31,7 +31,7 @@ public class ResizingArrayQueue<Item> implements Iterable<Item> {
 		
 		public Item next() {
 			count--;
-			return q[i++];
+			return q[(i++) % q.length];
 		}
 		
 	}
